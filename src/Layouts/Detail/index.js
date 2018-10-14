@@ -1,10 +1,19 @@
 import React from "react";
 import MovieHeader from "../../Components/MovieHeader";
-
-class MovieDetail extends React.Component {
+import Review from "../../Components/Review";
+export default class MovieDetail extends React.Component {
     state = {
-        reviewList: null,
-        filmDetail: null
+        reviewList: [
+            { user: "AnTran", content: "Good" },
+            { user: "Nghminh", content: "Cool" }
+        ],
+        filmDetail: {
+            title: "Venom", // response.title
+            consensus: "OK", // response.ratingSummary.consensus
+            posterImage: "", // response.posters.thumbnail
+            popcornScore: "89", // response.ratingSummary.audience.meterScore
+            tomatoScore: "30" // response.ratingSummary.allCritics.meterValue
+        }
     };
 
     componentDidMount() {
@@ -13,11 +22,13 @@ class MovieDetail extends React.Component {
         const reviewList = [
                 { user: "AnTran", content: "Good" },
                 { user: "Nghminh", content: "Cool" }
-            ],
+            ], // response.reviews.reviews.map (each => {return {content: each.quote, user: each.critic.name}})
             filmDetail = {
                 title: "Venom", // response.title
-                consensus: "OK", // response.
-                adjustedScore: 4
+                consensus: "OK", // response.ratingSummary.consensus
+                posterImage: "", // response.posters.thumbnail
+                popcornScore: "89", // response.ratingSummary.audience.meterScore
+                tomatoScore: "30" // response.ratingSummary.allCritics.meterValue
             };
         this.setState({ reviewList, filmDetail });
     }
@@ -25,8 +36,8 @@ class MovieDetail extends React.Component {
     render() {
         return (
             <div>
-                <MovieHeader />
-                <Review />
+                <MovieHeader filmDetail={this.state.filmDetail}/>
+                <Review reviewList={this.state.reviewList}/>
             </div>
         );
     }
