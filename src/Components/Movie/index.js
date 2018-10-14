@@ -2,6 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import { connect } from "react-redux";
 import Icon from "../Icon";
 const styles = theme => ({
   root: {
@@ -13,10 +14,21 @@ const styles = theme => ({
   }
 });
 class Movie extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+  }
+  handleMouseOver() {
+    this.props.dispatch({
+      type: "CLICK",
+      value: this.props.id,
+      name: "idCurrent"
+    });
+  }
   render() {
     return (
       <Paper
-        onMouseEnter={this.handleMouseOver}
+        onClick={this.handleMouseOver}
         className={this.props.classes.root}
         elevation={1}
       >
@@ -33,4 +45,7 @@ class Movie extends React.Component {
   }
 }
 
-export default withStyles(styles)(Movie);
+const mapStateToProps = state => ({
+  state
+});
+export default connect(mapStateToProps)(withStyles(styles)(Movie));
