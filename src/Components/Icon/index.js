@@ -21,12 +21,13 @@ const icons = {
   }
 };
 
-export default function Icon({ type }) {
+export default function Icon({ type, size }) {
   type = type.toLowerCase().replace(/[^a-z]+/g, "");
   if (type === "certifiedfresh") type = "certified";
   if (type === "popcorn") type = "upright";
   if (type === "anticipated") type = "wts";
-  const { styles, size: sizePx } = icons["tiny"];
+  const sizePx = size
+  const { styles } = icons["tiny"];
   return (
     <div
       style={Object.assign(

@@ -36,8 +36,8 @@ class Movie extends React.Component {
           {this.props.title}
         </Typography>
         <Typography component="p">
-          <Icon type={this.props.tomatoIcon} />
-          {this.props.tomatoScore} - <Icon type={this.props.popcornIcon} />
+          <Icon type={this.props.tomatoIcon} size={16}/>
+          {this.props.tomatoScore} - <Icon type={this.props.popcornIcon} size={16} />
           {this.props.popcornScore} - {this.props.realeaseDate}
         </Typography>
       </Paper>
