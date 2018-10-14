@@ -1,5 +1,6 @@
 import React from "react";
-import Movie from "../../Components/Movie";
+import MovieHeader from "../../Components/MovieHeader";
+
 class MovieDetail extends React.Component {
     state = {
         reviewList: null,
@@ -24,7 +25,7 @@ class MovieDetail extends React.Component {
     render() {
         return (
             <div>
-                <Movie />
+                <MovieHeader />
                 <Review />
             </div>
         );
